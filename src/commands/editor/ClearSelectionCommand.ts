@@ -33,6 +33,6 @@ export class ClearSelectionCommand extends Command {
   }
 
   async clean() {
-
+    //do nothing
   }
 }

@@ -44,5 +44,7 @@ export class RemoveIKChainCommand extends Command {
     this.editor.createIKChainForAnchor(this.anchor, this.chainHead, this.chainSize);
   }
   
-  clean(): void {}
+  clean(): void {
+    //do nothing
+  }
 }

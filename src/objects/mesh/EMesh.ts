@@ -24,12 +24,10 @@ export class EMeshSignals extends EObjectSignals {
   readonly materialChanged = new Signal();
 }
 
-export interface EMeshJsonData extends EObjectJsonData {}
-
-export interface EMeshBuildOptions {}
+export type EMeshJsonData = EObjectJsonData
 
 export abstract class EMesh <T extends  EMeshBase = EMeshBase> 
-    extends EObject<T> {
+  extends EObject<T> {
 
   static defaultColor = new Color(0x777777);
 
@@ -37,12 +35,11 @@ export abstract class EMesh <T extends  EMeshBase = EMeshBase>
   readonly isMesh = true;
   boxHelper?: BoxHelper;
 
-  constructor(mesh: T, _buildOptions: EMeshBuildOptions = {}) {
-    // mesh.material = setupMeshMaterial(mesh.material);
+  constructor(mesh: T) {
     super(mesh);
 
     // Init some material properties
-    const mats = Array.toArray(this.material);
+    const mats = Array.isArray(this.material) ? this.material : [this.material];
 
     let materialNamePrefix = mesh.name;
     if (materialNamePrefix !== "") {

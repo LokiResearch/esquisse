@@ -29,7 +29,7 @@ export class SetNameCommand extends Command {
   }
 
   async do() {
-     this.object.name = this.newName;
+    this.object.name = this.newName;
   }
 
   async undo() {
@@ -37,6 +37,6 @@ export class SetNameCommand extends Command {
   }
 
   async clean() {
-
+    //do nothing
   }
 }

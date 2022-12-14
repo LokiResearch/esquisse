@@ -33,13 +33,13 @@ declare global {
     toArray(arg: T | T[]): T[];
   }
 
-  interface ArrayConstructor {
-    /**
-     * Returns an array for the single value or the given array
-     * @param arg value or array of values
-     */
-    toArray<T=any>(arg: T | T[]): T[];
-  }
+  // interface ArrayConstructor {
+  //   /**
+  //    * Returns an array for the single value or the given array
+  //    * @param arg value or array of values
+  //    */
+  //   toArray<T=any>(arg: T | T[]): T[];
+  // }
 
 }
 
@@ -58,10 +58,10 @@ Array.prototype.remove = function<T>(arg: T) {
   return true;
 }
 
-Array.toArray = function<T>(arg: T | T[]) {
-  if (Array.isArray(arg)) return arg;
-  return [arg];
-}
+// Array.toArray = function<T>(arg: T | T[]) {
+//   if (Array.isArray(arg)) return arg;
+//   return [arg];
+// }
 
 export {}
 

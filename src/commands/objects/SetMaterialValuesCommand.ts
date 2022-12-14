@@ -34,7 +34,7 @@ export class SetMaterialValuesCommand extends Command {
       mesh: EMesh,
       material: MeshStandardMaterial,
       values: MaterialSupportedChangeValue = {}
-    ) {
+  ) {
     super(editor);
     this.mesh = mesh;
     this.material = material;
@@ -57,6 +57,7 @@ export class SetMaterialValuesCommand extends Command {
   }
 
   async clean() {
+    //do nothing
   }
 
 }

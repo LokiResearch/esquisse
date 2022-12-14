@@ -35,7 +35,7 @@ export class SetParentCommand extends Command {
         obj.traverse(o => allChildren.push(o));
   
         if (allChildren.includes(this.newParent)) {
-        console.warn("Cannot set an object as a child of itself.");
+          console.warn("Cannot set an object as a child of itself.");
         } else {
           this.oldParentMap.set(obj, obj.parent);
           this.objects.push(obj);
@@ -60,7 +60,7 @@ export class SetParentCommand extends Command {
   }
 
   clean() {
-
+    //do nothing
   }
 
 }

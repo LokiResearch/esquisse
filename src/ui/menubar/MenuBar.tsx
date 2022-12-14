@@ -33,32 +33,23 @@ const StyledToolbar = styled(Toolbar)(({theme}) => ({
   minHeight: theme.spacing(1)
 }));
 
-interface MenuBarProps {}
 
-interface MenuBarState {}
-
-export class MenuBar extends React.Component<MenuBarProps, MenuBarState> {
+export const MenuBar = () =>  {
   
-  render() {
-    let version = "v"+packageInfo.version;
-    if (packageInfo.branch.toLowerCase() === "develop") {
-      version = "develop"
-    }
-    return (
-      <StyledAppBar>
-        <StyledToolbar variant="dense">
-          <FileMenu/>
-          <EditMenu/>
-          <ObjectsMenu/>
-          <div style={{flexGrow:100}}/>
-          <QuickIcons/>
-          <div>
-            {version}
-          </div>
-        </StyledToolbar>
-      </StyledAppBar>
-    );
-  }
+  return (
+    <StyledAppBar>
+      <StyledToolbar variant="dense">
+        <FileMenu/>
+        <EditMenu/>
+        <ObjectsMenu/>
+        <div style={{flexGrow:100}}/>
+        <QuickIcons/>
+        <div>
+          {"v"+packageInfo.version}
+        </div>
+      </StyledToolbar>
+    </StyledAppBar>
+  );  
 }
 
 //##############################################################################
@@ -67,7 +58,7 @@ export class MenuBar extends React.Component<MenuBarProps, MenuBarState> {
 
 function FileMenu() {
 
-  let items: Array<Item> = [
+  const items: Array<Item> = [
     {type: 'action', name: 'New', icon: Icons.NewFileIcon, shortcut: '⌘N'},
     {type: 'action', name: 'Open', icon: Icons.OpenFileIcon, shortcut: '⌘O'},
     {type: 'action', name: 'Save', icon: Icons.SaveIcon, shortcut: '⌘S'},

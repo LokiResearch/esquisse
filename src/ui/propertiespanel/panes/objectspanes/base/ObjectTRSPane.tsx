@@ -172,11 +172,11 @@ const RotationVectorControl2 = (props: {state: TRSState}) => {
   }
 
   return (
-      <Vec3Control 
-        label="R:"
-        value={rotation} 
-        onChange={onChange}
-      />
+    <Vec3Control 
+      label="R:"
+      value={rotation} 
+      onChange={onChange}
+    />
   );
 }
 

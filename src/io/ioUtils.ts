@@ -25,11 +25,11 @@ export function convertAllMaterialsInTree(root: Object3D) {
 
   const newMaterialsMap = new Map<Material, MeshStandardMaterial>();
 
-  root.traverse( obj => {
+  root.traverse(obj => {
     const mesh = obj as Mesh;
     if (mesh.isMesh) {
 
-      const mats = Array.toArray(mesh.material);
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
       const newMats = [];
       for (const mat of mats) {
         if (!newMaterialsMap.has(mat)) {
@@ -64,12 +64,8 @@ export function convertMaterial(material: Material): MeshStandardMaterial {
 
     newMaterial = new MeshStandardMaterial();
 
-    if (material.hasOwnProperty('color')) {
-      const m = material as Material & {color: Color};
-      newMaterial.color.copy(m.color);
-    } else {
-      newMaterial.color.copy(EMesh.defaultColor);
-    }
+    const m = material as Material & {color: Color};
+    newMaterial.color.copy(m.color ?? EMesh.defaultColor);
   }
 
   newMaterial.side = material.side;
@@ -109,34 +105,34 @@ export function setupObjectsTree(obj: Object3D): EObject {
     obj.uuid = uuid;
 
     switch(type) {
-      case "Scene":
-        EObject = new EScene(obj as Scene);
-        break;
-      case "Group":
-        EObject = new EGroup(obj as Group);
-        break;
-      case "Screen":
-        EObject = new EScreen(obj as EMeshBase); 
-        break;
-      case "Anchor":
-        EObject = new EAnchor(obj as EMeshBase);
-        break;
-      case "Mesh":
-        EObject = new EBasicMesh(obj as EMeshBase);        
-        break;
-      case "SkinnedMesh":
-        EObject = new ESkinnedMesh(obj as ESkinnedMeshBase);        
-        break;
-      case "Bone":
-        EObject = new EBone(obj as Bone);
-        break;
-      case "Object3D":
-        EObject = new EEmptyObject(obj);
-        break;
-      default:
-        console.warn(`Unsupported object {type:${obj.type}, name:${obj.name}} was put in EEmptyObject`);
-        EObject = new EEmptyObject(obj);
-        break;
+    case "Scene":
+      EObject = new EScene(obj as Scene);
+      break;
+    case "Group":
+      EObject = new EGroup(obj as Group);
+      break;
+    case "Screen":
+      EObject = new EScreen(obj as EMeshBase); 
+      break;
+    case "Anchor":
+      EObject = new EAnchor(obj as EMeshBase);
+      break;
+    case "Mesh":
+      EObject = new EBasicMesh(obj as EMeshBase);        
+      break;
+    case "SkinnedMesh":
+      EObject = new ESkinnedMesh(obj as ESkinnedMeshBase);        
+      break;
+    case "Bone":
+      EObject = new EBone(obj as Bone);
+      break;
+    case "Object3D":
+      EObject = new EEmptyObject(obj);
+      break;
+    default:
+      console.warn(`Unsupported object {type:${obj.type}, name:${obj.name}} was put in EEmptyObject`);
+      EObject = new EEmptyObject(obj);
+      break;
     }
 
     for (const child of obj.children) {

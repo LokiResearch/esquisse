@@ -16,7 +16,7 @@ import { Bone } from "three";
 
 export function parentBone(bone: Bone) {
 
-  let parent = bone.parent as Bone | null;
+  const parent = bone.parent as Bone | null;
   if (parent && parent.isBone) {
     return parent;
   }

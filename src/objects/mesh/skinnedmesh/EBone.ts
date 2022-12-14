@@ -27,7 +27,7 @@ export class EBone extends EObject<Bone> {
    * The ikChains the bone belongs to
    */
   ikChains = new Array<IKChain>();
-  isIKLocked: boolean = false;
+  isIKLocked = false;
   helper?: BoneHelper;
   canChangeParent = false;
   canReceiveChildren = false;
@@ -70,7 +70,7 @@ export class EBone extends EObject<Bone> {
   }
 
   get rootBone() {
-    let root: EBone = this;
+    let root = this as EBone;
     while (root.parent && (root.parent as EBone).isBone) {
       root = root.parent as EBone;
     }

@@ -32,7 +32,7 @@ export class GroupObjectsCommand extends Command {
     }
 
     // Get the lowest hierarchical common parent of the objects to group
-    let distance = Infinity;
+    const distance = Infinity;
     let groupParent;
     for (const obj of objects) {
       const parent = obj.parent;

@@ -92,7 +92,7 @@ export const LibraryPane = () => {
       </Typography>
       <FlexRow>
         <Button variant="outlined" fullWidth
-            onClick={onSaveButtonClick}>
+          onClick={onSaveButtonClick}>
           Save
         </Button>
       </FlexRow>
@@ -157,16 +157,16 @@ const ServerItemSelector = (props: ServerItemSelectorProps) => {
   return (
     <>
 
-    <Button fullWidth variant="outlined" onClick={loadItems}>
-      {label}
-    </Button>
+      <Button fullWidth variant="outlined" onClick={loadItems}>
+        {label}
+      </Button>
 
-    <ServerItemsModalView
-      open={items.length > 0}
-      items={items}
-      onClose={onClose}
-      onItemSelected={onModelItemSelected}
-    />
+      <ServerItemsModalView
+        open={items.length > 0}
+        items={items}
+        onClose={onClose}
+        onItemSelected={onModelItemSelected}
+      />
     </>
   );
 

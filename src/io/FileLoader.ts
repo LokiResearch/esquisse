@@ -25,37 +25,37 @@ export class FileLoader {
       onSuccess: (group: Group) => void,
       onProgress: (event: ProgressEvent) => void,
       onError: (event: ErrorEvent) => void
-    ) {
+  ) {
 
     const format = file.name.split(".").pop();
     let loader;
+    const onGLTFSuccess = (gltf: GLTF) => {onSuccess(gltf.scene)};
 
     switch (format) {
 
-      case 'gltf':
-      case 'glb':
+    case 'gltf':
+    case 'glb':
 
-        const onGLTFSuccess = (gltf: GLTF) => onSuccess(gltf.scene);
-        loader = new GLTFLoader();
-        loader.load(file.url, onGLTFSuccess, onProgress, onError);
-        break;
+      loader = new GLTFLoader();
+      loader.load(file.url, onGLTFSuccess, onProgress, onError);
+      break;
 
-      case 'obj':
+    case 'obj':
 
-       loader = new OBJLoader();
-       loader.load(file.url, onSuccess, onProgress, onError);
-       break;
+      loader = new OBJLoader();
+      loader.load(file.url, onSuccess, onProgress, onError);
+      break;
 
-      case 'fbx':
+    case 'fbx':
 
-        loader = new FBXLoader();
-        loader.load(file.url, onSuccess, onProgress, onError);
-        break;
+      loader = new FBXLoader();
+      loader.load(file.url, onSuccess, onProgress, onError);
+      break;
 
-      default:
+    default:
 
-        console.error(`Unsupported file format ${format}`);
-        break;
+      console.error(`Unsupported file format ${format}`);
+      break;
 
     }
 

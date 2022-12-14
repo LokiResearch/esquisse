@@ -36,9 +36,11 @@ export class SetIKChainSizeCommand extends Command {
   do(): void {
     this.editor.setIKChainSize(this.anchor, this.newSize);
   }
+  
   undo(): void {
     this.editor.setIKChainSize(this.anchor, this.oldSize);
   }
+
   clean(): void {
     throw new Error('Method not implemented.');
   }

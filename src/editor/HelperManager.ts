@@ -115,7 +115,7 @@ export class HelpersManager {
     
     let needsUpdate = false;
     for (const obj of objects) {
-      let bone = obj as EBone;
+      const bone = obj as EBone;
       if (bone.isBone) {
         this.showBoneHelper(bone.rootBone, visibility);
         needsUpdate = true;

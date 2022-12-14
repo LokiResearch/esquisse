@@ -23,16 +23,4 @@ export abstract class ELight<T extends Light, H extends Object3D> extends EObjec
   constructor(light: T) {
     super(light);
   }
-
-  onSelected() {
-    super.onSelected();
-  }
-
-  onUnselected() {
-    super.onUnselected();
-  }
-
-  onTransformUpdate() {
-    super.onTransformUpdate();
-  }
 }

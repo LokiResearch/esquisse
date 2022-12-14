@@ -53,7 +53,7 @@ export const HelpersPane = (props: {object: EObject}) => {
 }
 
 const ObjectHelpers = (_props: {object: EObject}) => {
-  return <></>
+  return <></>;
 }
 
 const MeshHelpers = (props: {mesh: EMesh}) => {
@@ -109,10 +109,10 @@ const BoneHelpers = (props: {bone: EBone}) => {
       <ObjectHelpers object={bone}/>
 
       <BooleanControl
-          label="Show skeleton helper"
-          value={boneHelperVisible}
-          onChange={onBoneHelperChanged}
-        />
+        label="Show skeleton helper"
+        value={boneHelperVisible}
+        onChange={onBoneHelperChanged}
+      />
 
     </>
   );

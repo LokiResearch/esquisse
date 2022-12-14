@@ -12,7 +12,7 @@
 
 import React from 'react';
 import {Paper, ToggleButton, ToggleButtonGroup, styled, Tooltip, PaperProps
-  } from '@mui/material';
+} from '@mui/material';
 import {PoseModeIcon, BoneModeIcon, ObjectModeIcon} from '/ui/Icons';
 import {InteractionMode} from '../Viewport';
 

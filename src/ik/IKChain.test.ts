@@ -39,7 +39,7 @@ let b4a: Bone;
 let mockWarn: jest.SpyInstance;
 
 beforeAll(() => {
-  mockWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+  mockWarn = jest.spyOn(console, 'warn').mockImplementation(() => {/**/});
 });
 
 afterAll(() => {

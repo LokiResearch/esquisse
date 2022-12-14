@@ -13,15 +13,12 @@
 import {Editor} from '/editor/Editor';
 import {Command} from '/commands';
 import {EScene} from '/objects';
-// import {EObject} from '/objects/EObject';
 
 export class SetSceneCommand extends Command {
   readonly name = "SetSceneCommand";
   readonly isUndoable = true;
   private readonly newScene: EScene;
   private readonly oldScene: EScene;
-  // private readonly newChildren: Array<EObject>;
-  // private readonly oldChildren: Array<EObject>;
 
   // We need to save the list of old and new objects as when the scene changes,
   // parent of these object changes
@@ -29,56 +26,19 @@ export class SetSceneCommand extends Command {
   constructor(editor: Editor, scene: EScene) {
     super(editor);
     this.newScene = scene;
-    // this.newChildren = [...this.newScene.children];
     this.oldScene = this.editor.scene;
-    // this.oldChildren = [...this.oldScene.children];
   }
 
   async do() {
-    // this.editor.setScene(this.newScene, this.newChildren);
     this.editor.setScene(this.newScene);
   }
 
   async undo() {
-    // this.editor.setScene(this.oldScene, this.oldChildren);
     this.editor.setScene(this.oldScene);
   }
 
   async clean() {
-
+    //do nothing
   }
   
 }
-
-// export class SetSceneCommand extends Command {
-//   readonly name = "SetSceneCommand";
-//   readonly isUndoable = true;
-//   private readonly newScene: EScene;
-//   private readonly oldScene: EScene;
-//   private readonly newChildren: Array<EObject>;
-//   private readonly oldChildren: Array<EObject>;
-
-//   // We need to save the list of old and new objects as when the scene changes,
-//   // parent of these object changes
-
-//   constructor(editor: Editor, scene: EScene) {
-//     super(editor);
-//     this.newScene = scene;
-//     this.newChildren = [...this.newScene.children];
-//     this.oldScene = this.editor.scene;
-//     this.oldChildren = [...this.oldScene.children];
-//   }
-
-//   async do() {
-//     this.editor.setScene(this.newScene, this.newChildren);
-//   }
-
-//   async undo() {
-//     this.editor.setScene(this.oldScene, this.oldChildren);
-//   }
-
-//   async clean() {
-
-//   }
-  
-// }

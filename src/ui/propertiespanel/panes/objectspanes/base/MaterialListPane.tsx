@@ -25,7 +25,9 @@ export interface MaterialListPaneProps {
 export const MaterialListPane = (props: MaterialListPaneProps) => {
 
   const {mesh} = props;
-  const [materials, setMaterials] = React.useState(Array.toArray(mesh.material));
+  const matArray = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+
+  const [materials, setMaterials] = React.useState(matArray);
 
   /**
    * Suscribe to update to materials
@@ -33,7 +35,8 @@ export const MaterialListPane = (props: MaterialListPaneProps) => {
   React.useEffect(() => {
     
     const updateMaterials = () => {
-      setMaterials([...Array.toArray(mesh.material)]);
+      const matArray = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      setMaterials([...matArray]);
     }
     updateMaterials();
     mesh.signals.materialChanged.connect(updateMaterials);

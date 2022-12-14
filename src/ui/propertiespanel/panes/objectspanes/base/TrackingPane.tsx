@@ -162,7 +162,7 @@ export const TrackingViewCanvas = (props: TrackingViewProps) => {
   const [flipVideo, setFlipVideo] = React.useState(props.flipVideo ?? false);
   const [ready, setReady] = React.useState(false);
 
-   /**
+  /**
    * Flip context 2D
    */
 
@@ -205,7 +205,7 @@ export const TrackingViewCanvas = (props: TrackingViewProps) => {
     }
   }, [showCameraFeed]);
 
-   /**
+  /**
    * Setup Hand Tracking Listener
    */
   React.useEffect(() => {

@@ -41,6 +41,7 @@ interface BaseSettingsProps<T> extends BaseControlProps {
   onChange?: (value: T) => void;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Setting<T> extends BaseSettingsProps<T> {}
 export abstract class Setting<T> {
   constructor(params: BaseSettingsProps<T>) {
@@ -70,6 +71,7 @@ export abstract class Setting<T> {
 /**
  * Class that embeds the `BooleanControlProps` properties.
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface BooleanSetting extends BooleanControlProps {}
 export class BooleanSetting extends Setting<boolean> {
   constructor(params: BooleanControlProps) {
@@ -85,7 +87,7 @@ export class BooleanSetting extends Setting<boolean> {
  * @param props 
  * @returns 
  */
- export const BooleanSettingControl = observer(
+export const BooleanSettingControl = observer(
   (props: {setting: BooleanSetting, disabled?: boolean}) => {
     const disabled = props.setting.disabled ?? props.disabled;
     return <BooleanControl {...props.setting} disabled={disabled}/>;
@@ -96,6 +98,7 @@ export class BooleanSetting extends Setting<boolean> {
 /**
  * Class that embeds the `NumberControlProps` properties.
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NumberSetting extends NumberControlProps {}
 export class NumberSetting extends Setting<number> {
   constructor(params: NumberControlProps) {
@@ -111,16 +114,17 @@ export class NumberSetting extends Setting<number> {
  * @param props 
  * @returns 
  */
- export const NumberSettingControl = observer(
+export const NumberSettingControl = observer(
   (props: {setting: NumberSetting, disabled?: boolean}) => {
     const disabled = props.setting.disabled ?? props.disabled;
     return <NumberControl {...props.setting} disabled={disabled}/>;
   }
- );
+);
 
 /**
  * Class that embeds the `ColorControlProps` properties.
  */
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ColorSetting extends ColorControlProps {}
 export class ColorSetting extends Setting<string> {
   constructor(params: ColorControlProps) {
@@ -136,7 +140,7 @@ export class ColorSetting extends Setting<string> {
  * @param props 
  * @returns 
  */
- export const ColorSettingControl = observer(
+export const ColorSettingControl = observer(
   (props: {setting: ColorSetting, disabled?: boolean}) => {
     const disabled = props.setting.disabled ?? props.disabled;
     return <ColorControl {...props.setting} disabled={disabled}/>;

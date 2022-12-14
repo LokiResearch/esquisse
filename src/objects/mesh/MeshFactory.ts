@@ -23,9 +23,9 @@ export enum MeshType {
   PLANE = "plane",
 }
 
-export interface StandardMeshOptions extends MeshStandardMaterialParameters {}
+export type StandardMeshOptions = MeshStandardMaterialParameters
 
-export interface BasicMeshOptions extends MeshBasicMaterialParameters {}
+export type BasicMeshOptions = MeshBasicMaterialParameters
 
 export class MeshFactory {
 
@@ -41,32 +41,32 @@ export class MeshFactory {
   }
 
   static getBasicMesh(
-    type: MeshType,
-    options: BasicMeshOptions = {color: 0xAAAAAA}) {
+      type: MeshType,
+      options: BasicMeshOptions = {color: 0xAAAAAA}) {
 
-  const material = new MeshBasicMaterial(options);
-  const geometry = geometryForType(type);
-  const mesh = new Mesh(geometry, material);
-  mesh.name = type;
-  return mesh;
-}
+    const material = new MeshBasicMaterial(options);
+    const geometry = geometryForType(type);
+    const mesh = new Mesh(geometry, material);
+    mesh.name = type;
+    return mesh;
+  }
 }
 
 function geometryForType(type: MeshType): BufferGeometry {
   switch (type) {
-    case MeshType.TORUS:
-      return new TorusGeometry(1, 0.3, 10, 20);
-    case MeshType.CUBE:
-      return new BoxGeometry(1,1,1);
-    case MeshType.KNOT:
-      return new TorusKnotGeometry(1, 0.3, 100, 15);
-    case MeshType.CYLINDER:
-      return new CylinderGeometry(0.5, 0.5, 1, 20);
-    case MeshType.SPHERE:
-      return new SphereGeometry(1, 15, 15);
-    case MeshType.PLANE:
-      return new PlaneGeometry(1,1);
-    default:
-      return new BoxGeometry(1,1,1);
+  case MeshType.TORUS:
+    return new TorusGeometry(1, 0.3, 10, 20);
+  case MeshType.CUBE:
+    return new BoxGeometry(1,1,1);
+  case MeshType.KNOT:
+    return new TorusKnotGeometry(1, 0.3, 100, 15);
+  case MeshType.CYLINDER:
+    return new CylinderGeometry(0.5, 0.5, 1, 20);
+  case MeshType.SPHERE:
+    return new SphereGeometry(1, 15, 15);
+  case MeshType.PLANE:
+    return new PlaneGeometry(1,1);
+  default:
+    return new BoxGeometry(1,1,1);
   }
 }

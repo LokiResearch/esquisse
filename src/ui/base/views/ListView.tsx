@@ -48,12 +48,12 @@ export const ListView = (props: ListViewProps) => {
 
   return (
     <Box sx={styles.root}>
-        <Typography>
-          {label}
-        </Typography>
-        <List dense>
-          {listItems}
-        </List>
+      <Typography>
+        {label}
+      </Typography>
+      <List dense>
+        {listItems}
+      </List>
     </Box>
   );
 }

@@ -321,14 +321,14 @@ export const Viewport = (props: ViewportProps) => {
     }
   }
 
-  const onPointerDown = (_event: React.PointerEvent) => {
+  const onPointerDown = () => {
     if (state.isTransforming) {
       return
     }
     state.isPressing = true;
   }
 
-  const onPointerMove = (_event: React.PointerEvent) => {
+  const onPointerMove = () => {
     if (state.isTransforming) {
       return;
     }
@@ -402,11 +402,11 @@ export const Viewport = (props: ViewportProps) => {
           mode={interactionMode}
           onModeChange={onInteractionModeChange}
         />
-        </Box>
-        <Box sx={styles.cameraView} ref={cameraViewRef}/>
+      </Box>
+      <Box sx={styles.cameraView} ref={cameraViewRef}/>
       <ViewportInfo renderer={renderer}/>
     </Box>
-    );
+  );
 }
 
 

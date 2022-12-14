@@ -35,7 +35,7 @@ export class FileButton extends React.Component<Props, State> {
 
   private readonly fileReader = new FileReader();
   private input: HTMLInputElement;
-  private filename: string = "";
+  private filename = "";
 
   constructor(props: Props) {
     super(props);

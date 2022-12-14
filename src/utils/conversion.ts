@@ -17,7 +17,7 @@ export function degToRad(deg: number): number {
 }
 
 export function emToPx(em: number): number {
-  let div = document.getElementById('emToPx');
+  const div = document.getElementById('emToPx');
 
   if (div) {
     return div.offsetWidth*em;

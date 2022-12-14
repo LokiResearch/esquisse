@@ -17,5 +17,7 @@ import { Helper } from "./Helper";
 
 export class BoxHelper extends ThreeBoxHelper implements Helper {
 
-  dispose() {}
+  dispose() {
+    // do nothing.
+  }
 }

@@ -47,6 +47,7 @@ export class ObjectRequest extends Request<Array<EObject>> {
       }
 
       const onLoadProgress = (_: ProgressEvent) => {
+        // do nothing
       }
 
       const onLoadError = (e: ErrorEvent) => {

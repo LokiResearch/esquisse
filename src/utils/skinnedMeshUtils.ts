@@ -26,7 +26,7 @@ const _pos = new Vector3();
 export function updateBoundingVolumesFromGeometry(
     mesh: SkinnedMesh,
     step = 3
-  ) {
+) {
 
   if (step <1) step = 1;
 

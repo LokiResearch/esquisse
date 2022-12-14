@@ -26,7 +26,7 @@ export class SelectCommand extends Command {
       editor: Editor,
       selection: EObject | Array<EObject>,
       multipleSelectionActive: boolean
-    ) {
+  ) {
     super(editor);
 
     if (Array.isArray(selection)) {
@@ -68,6 +68,6 @@ export class SelectCommand extends Command {
   }
 
   async clean() {
-
+    //do nothing
   }
 }

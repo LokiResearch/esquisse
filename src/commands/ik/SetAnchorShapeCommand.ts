@@ -38,5 +38,7 @@ export class SetAnchorShapeCommand extends Command {
     this.editor.setAnchorShape(this.anchor, this.oldShape);
   }
   
-  clean(): void {}
+  clean(): void {
+    //do nothing
+  }
 }

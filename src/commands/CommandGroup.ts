@@ -39,6 +39,6 @@ export class CommandGroup extends Command {
   }
 
   clean() {
-
+    //do nothing
   }
 }

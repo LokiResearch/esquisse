@@ -112,7 +112,7 @@ export const InterfacePane = (props: {screen: EScreen}) => {
 async function loadTextureFromFile(file: URLFile) {
   const loader = new TextureLoader();
 
-  return new Promise<Texture>(async (resolve, reject) => {
+  return new Promise<Texture>((resolve, reject) => {
 
     const loadTexture = (url: string) => {
       loader.loadAsync(url)
@@ -124,35 +124,6 @@ async function loadTextureFromFile(file: URLFile) {
         .catch(reject);
     }
 
-    /**
-     * Convert the SVG to PNG using Canvg as the image computed by Three.js has
-     * low resolution
-     */
-    // if (file.url.startsWith('data:image/svg+xml;base64')) {
-    //   convertSVGToImage(file)
-    //     .then(url => loadTexture(url))
-    //     .catch(() => {console.error("Error convering SVG to Image")});
-    // } else {
-      loadTexture(file.url);
-    // }
+    loadTexture(file.url);
   });
 }
-
-// export function convertSVGToImage(file: URLFile) {
-
-//   return new Promise<string>(async (resolve, reject) => {
-
-//     const {Canvg} = await import ('canvg');
-
-//     const canvas = document.getElementById('SVGConversionCanvas') as HTMLCanvasElement;
-//     const ctx = canvas.getContext('2d');
-//     if (ctx) {
-//       const v = await Canvg.from(ctx, file.url);
-//       // v.resize(1024, 1024, 'xMidYMid meet');
-//       v.render();
-//       resolve(canvas.toDataURL());
-//     }
-//     reject();
-//   });
-// }
-

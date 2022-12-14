@@ -27,7 +27,7 @@ describe("Array class", () => {
   test("Clear array", () => {
     const array = [1, 2, 3];
     array.clear();
-    expect(array.length).toBe(0);
+    expect(array).toHaveLength(0);
   });
 
 });

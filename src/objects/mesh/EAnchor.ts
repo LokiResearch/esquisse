@@ -123,19 +123,19 @@ export class EAnchor extends EMesh {
 
     this._shape = shape;
     switch (shape) {
-      case EAnchorShape.Sphere:
-        this.threeObject.geometry = _sphereGeometry;
-        break;
-      case EAnchorShape.Circle:
-        this.threeObject.geometry = _circleGeometry;
-        break;
-      case EAnchorShape.Box:
-        this.threeObject.geometry = _boxGeometry;
-        break;
-      default:
-      case EAnchorShape.NoShape:
-        this.threeObject.geometry = _noShapeGeometry;
-        break;
+    case EAnchorShape.Sphere:
+      this.threeObject.geometry = _sphereGeometry;
+      break;
+    case EAnchorShape.Circle:
+      this.threeObject.geometry = _circleGeometry;
+      break;
+    case EAnchorShape.Box:
+      this.threeObject.geometry = _boxGeometry;
+      break;
+    default:
+    case EAnchorShape.NoShape:
+      this.threeObject.geometry = _noShapeGeometry;
+      break;
     }
     this.signals.ikDataUpdated.emit();
   }

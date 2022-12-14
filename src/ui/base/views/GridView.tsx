@@ -117,7 +117,7 @@ export class GridView extends React.Component<Props, State> {
           >
             {gridItems}
           </Grid>
-      </Box>
+        </Box>
       </Box>
     )
   }

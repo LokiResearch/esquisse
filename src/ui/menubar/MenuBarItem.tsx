@@ -52,11 +52,7 @@ interface MenuBarItemProps {
   onPointerLeave?: ((e: React.PointerEvent<HTMLElement>) => void);
 }
 
-interface MenuBarItemState {
-
-}
-
-export class MenuBarItem extends React.Component<MenuBarItemProps, MenuBarItemState> {
+export class MenuBarItem extends React.Component<MenuBarItemProps> {
 
   onClick = (e: React.SyntheticEvent<HTMLElement>) => {
     if (this.props.item.type === 'action') {
@@ -91,8 +87,8 @@ export class MenuBarItem extends React.Component<MenuBarItemProps, MenuBarItemSt
         </StyledMenuItem>
       );
     } else if (this.props.item.type === "list") {
-      let name = this.props.item.name ? this.props.item.name : '<name>';
-      let subitems = this.props.item.subitems ? this.props.item.subitems : [];
+      const name = this.props.item.name ? this.props.item.name : '<name>';
+      const subitems = this.props.item.subitems ? this.props.item.subitems : [];
       return (
         <MenuBarList items={subitems} name={name} primary={false}/> 
       )

@@ -12,8 +12,8 @@ const styles = {
     // background: 'action.disabledBackground'
   },
   item: {
-      paddingTop: 0,
-      paddingBottom: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
   },
   content: {
     margin: '0.3em',
@@ -62,7 +62,7 @@ export class PanelItem extends React.Component<Props, State> {
         expanded: !state.expanded,
       }))
     } else {
-      let currentTarget = event.currentTarget;
+      const currentTarget = event.currentTarget;
       this.setState(state => ({
         popperAnchor: state.popperAnchor ? null : currentTarget,
       }))

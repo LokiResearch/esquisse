@@ -2,9 +2,9 @@
 import React from 'react';
 import {createSvgIcon} from '@mui/material';
 import {Undo, Save, Create, Redo, FolderOpen, Brightness7, Brightness4,
-ChevronRight, ChevronLeft, AccountTree, ExpandLess, ExpandMore, Menu, Settings,
-PhotoCamera, LibraryBooks, OpenWith, Loop, ZoomOutMap, Language, Add, Remove,
-Publish, Accessibility, ViewInAr, CropFree, Flare, SmartScreen, DataObject, PushPin} from '@mui/icons-material';
+  ChevronRight, ChevronLeft, AccountTree, ExpandLess, ExpandMore, Menu, Settings,
+  PhotoCamera, LibraryBooks, OpenWith, Loop, ZoomOutMap, Language, Add, Remove,
+  Publish, Accessibility, ViewInAr, CropFree, Flare, SmartScreen, DataObject, PushPin} from '@mui/icons-material';
 
 // Custom icons
 export const Bone = createSvgIcon(

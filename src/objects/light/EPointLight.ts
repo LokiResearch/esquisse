@@ -21,8 +21,4 @@ export class EPointLight extends ELight<PointLight, PointLightHelper> {
   constructor(light = new PointLight()) {
     super(light);
   }
-
-  onSelected() {
-
-  }
 }

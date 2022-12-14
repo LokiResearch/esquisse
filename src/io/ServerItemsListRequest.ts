@@ -30,43 +30,43 @@ export class ServerItemsListRequest extends Request<ServerItemData[]> {
     return new Promise<ServerItemData[]>((resolve, reject) => {
 
       fetch(ServerDataIndexUrl)
-      .then(response => {
-        if (!response.ok)
-          reject("Scene list fetch failed: "+response.statusText);
-        return response.text();
-      })
-      .then(text => {
-        const serverData = JSON.parse(text);
+        .then(response => {
+          if (!response.ok)
+            reject("Scene list fetch failed: "+response.statusText);
+          return response.text();
+        })
+        .then(text => {
+          const serverData = JSON.parse(text);
 
-        const serverItems = new Array<ServerItemData>();
-
-        if (serverData.hasOwnProperty(this.dataType)) {
+          const serverItems = new Array<ServerItemData>();
 
           const data = serverData[this.dataType];
 
-          for (const item of data) {
+          if (data) {
 
-            if (item.hasOwnProperty('filename') && item.hasOwnProperty('path')) {
+            for (const item of data) {
 
-              const serverItem : ServerItemData = {
-                name: item.filename,
-                url: ServerDataUrl+item.path
+              if (item.filename !== undefined && item.path !== undefined) {
+
+                const serverItem : ServerItemData = {
+                  name: item.filename,
+                  url: ServerDataUrl+item.path
+                }
+
+                if (item.image !== undefined) {
+                  serverItem.image = ServerDataUrl+item.image;
+                }
+
+                serverItems.push(serverItem);
+
               }
-
-              if (item.hasOwnProperty('image')) {
-                serverItem.image = ServerDataUrl+item.image;
-              }
-
-              serverItems.push(serverItem);
-
             }
           }
-        }
-        resolve(serverItems);
-      })
-      .catch(error => {
-        reject(error);
-      });
+          resolve(serverItems);
+        })
+        .catch(error => {
+          reject(error);
+        });
     });
   }
 }

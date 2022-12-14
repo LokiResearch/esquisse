@@ -40,6 +40,6 @@ export class AddObjectsCommand extends Command {
   }
 
   async clean() {
-    
+    //do nothing
   }
 }

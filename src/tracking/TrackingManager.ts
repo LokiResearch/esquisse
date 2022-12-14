@@ -46,7 +46,7 @@ export class TrackingManager {
     this.isTracking = true;
     await this.camera.start();
     await this.track();
-   }
+  }
 
   async stop() {
     this.isTracking = false;
@@ -186,7 +186,7 @@ export class TrackingManager {
       }
     );
 
-    for (const listener of this.poseListeners) {
+    for (const listener of this.poseListeners) {
       listener(poses);
     }
   }

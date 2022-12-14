@@ -34,7 +34,7 @@ export class SceneMenu extends React.Component<SceneMenuProps, SceneMenuState> {
   }
 
   onFetchServerScenesList = () => {
-    let request = new ServerScenesListRequest();
+    const request = new ServerScenesListRequest();
     request.process().then(list => {
       this.setState({
         serverScenes: list
@@ -48,7 +48,7 @@ export class SceneMenu extends React.Component<SceneMenuProps, SceneMenuState> {
   }
 
   onLoad3DScene = () => {
-    let op = new LoadSceneOperator(Constants.SERVER_SCENES_DIR+this.state.selectedScene);
+    const op = new LoadSceneOperator(Constants.SERVER_SCENES_DIR+this.state.selectedScene);
     op.do();
   }
 
@@ -59,18 +59,18 @@ export class SceneMenu extends React.Component<SceneMenuProps, SceneMenuState> {
   }
 
   onImportObject = () => {
-    let input = document.createElement('input');
+    const input = document.createElement('input');
     input.type = 'file';
     input.accept = ".obj";
 
     input.onchange = function() {
       if (input.files) {
-        let obj = input.files[0];
-        let fr = new FileReader();  
+        const obj = input.files[0];
+        const fr = new FileReader();  
         fr.onload = function() {
           if (fr.result && typeof fr.result === "string") {
             console.log("Import object:", obj.name);
-            let op = new LoadObjectsOperator([fr.result]);
+            const op = new LoadObjectsOperator([fr.result]);
             op.do();
           }
         }
@@ -82,12 +82,12 @@ export class SceneMenu extends React.Component<SceneMenuProps, SceneMenuState> {
   }
 
   onRenderScene = () => {
-    let op = new RenderOperator();
+    const op = new RenderOperator();
     op.do();
   }
 
   render() {
-    let items = this.state.serverScenes.map(
+    const items = this.state.serverScenes.map(
       (item:string, index:number) => {
         return (
           <option key={index}>
@@ -117,19 +117,19 @@ export class SceneMenu extends React.Component<SceneMenuProps, SceneMenuState> {
         </div>
         <div className="row">
           <button type="button" className="btn btn-primary"
-              color="primary" onClick={this.onLoad3DScene}>
+            color="primary" onClick={this.onLoad3DScene}>
               Load 3D Scene
           </button>
         </div>
         <div className="row">
           <button type="button" className="btn btn-primary"
-              color="primary" onClick={this.onImportObject}>
+            color="primary" onClick={this.onImportObject}>
               import object
           </button>
         </div>
         <div className="row">
           <button type="button" className="btn btn-primary"
-              color="primary" onClick={this.onRenderScene}>
+            color="primary" onClick={this.onRenderScene}>
               Render Scene
           </button>
         </div>

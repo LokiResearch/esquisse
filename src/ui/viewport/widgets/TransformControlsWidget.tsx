@@ -121,7 +121,7 @@ const TransformSpaceControl = React.memo((props: TransformSpaceControlProps)=>{
     }
   }
 
-  let value = [];
+  const value = [];
   let tooltip = TransformSpace.Global;
   if (space === TransformSpace.Global) {
     tooltip = TransformSpace.Local;

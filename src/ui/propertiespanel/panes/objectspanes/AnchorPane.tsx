@@ -83,7 +83,7 @@ const AnchorIKChainSizeControl = (props: {anchor: EAnchor}) => {
   }
 
   if (!ikChain) {
-    return <></>
+    return <></>;
   }
 
   return (
@@ -137,7 +137,7 @@ const AnchorTemporaryButton = (props: {anchor: EAnchor}) => {
   }
 
   if (!anchor.isTemporary) {
-    return <></>
+    return <></>;
   }
 
   return (
@@ -167,7 +167,7 @@ const AddRemoveChainButton = (props: {anchor: EAnchor}) => {
   } else {
 
     const addChain = () => {
-      
+      console.info("Add IK chain not implemented");
     }
 
     return (

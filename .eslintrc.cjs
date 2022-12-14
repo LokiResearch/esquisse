@@ -1,0 +1,30 @@
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    "jest",
+    '@typescript-eslint',
+  ],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  "ignorePatterns": ["src/thirdparty/*"],
+  rules: {
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    'array-bracket-spacing':["error"],
+    'space-in-parens':["error"],
+    "@typescript/no-empty-interface": "off",
+    "indent": ["error", 2, {
+      "FunctionDeclaration": {"parameters": 2},
+      "FunctionExpression": {"parameters": 2}
+    }]
+    // '@typescript-eslint/no-namespace': ["error", {
+    //   "allowDeclarations": true
+    // }]
+  }
+};

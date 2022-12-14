@@ -23,7 +23,7 @@ import { DeleteForever } from '@mui/icons-material';
 const DnDDataFormat = "scene_tree_view_dnd_data_format";
 
 /** Drag and Drop data interface */
-interface DnDData {objectId: number};
+interface DnDData {objectId: number}
 
 /** As native DnD dropeffect cursors are limited to copy|move|none|link, we use
  * a ref to the dragged item DOM id to manually set its cursor appearance */
@@ -177,13 +177,12 @@ const StyledTreeItem = styled(TreeItem)(
       padding: 0,
     },
   }
-));
+  ));
 
-interface ContentProps extends TreeItemContentProps {
-}
+type ContentProps = TreeItemContentProps
 
 const Content = React.forwardRef(function CustomComponent(
-  props: ContentProps, ref
+    props: ContentProps, ref
 ) {
 
   const { className, classes, nodeId, expansionIcon, label, id } = props;
@@ -240,8 +239,8 @@ const LabelContent = (props: LabelContentProps) => {
     setName(object.name);
   }
 
-   // Listen to the object name changes
-   React.useEffect(() => {
+  // Listen to the object name changes
+  React.useEffect(() => {
     object.signals.nameUpdated.connect(updateName);
     return () => {
       object.signals.nameUpdated.disconnect(updateName);
@@ -290,7 +289,7 @@ const DeleteButton = (props: {object: EObject}) => {
 
   return (
     <Button sx={styles.actionButton} onClick={deleteObject} color="error">
-        <DeleteForever sx={styles.actionIcon}/>
+      <DeleteForever sx={styles.actionIcon}/>
     </Button>
   )
 }

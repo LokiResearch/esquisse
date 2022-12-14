@@ -116,9 +116,9 @@ export class DeviceCamera {
     return new Promise<void>((resolve) => {
       if (this.video.readyState === HTMLMediaElement.HAVE_NOTHING ||
         this.video.readyState === HTMLMediaElement.HAVE_CURRENT_DATA) {
-          this.video.onloadeddata = () => {
-            resolve();
-          }
+        this.video.onloadeddata = () => {
+          resolve();
+        }
       } else {
         resolve();
       }

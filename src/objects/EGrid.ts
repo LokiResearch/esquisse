@@ -11,7 +11,7 @@
 // LICENCE: Licence.md 
 
 import { Color, LineSegments, BufferAttribute, BufferGeometry, LineBasicMaterial,
- ColorRepresentation} from 'three';
+  ColorRepresentation} from 'three';
 import { EObject } from './EObject';
 
 const min_size = 1;
@@ -29,7 +29,7 @@ export class EGrid extends EObject<LineSegments> {
   readonly type = 'GridHelper';
 
   constructor(
-      size: number = 10, 
+      size = 10, 
       color: THREE.ColorRepresentation = 0x777777) {    
 
     const positions = new BufferAttribute(
@@ -55,7 +55,7 @@ export class EGrid extends EObject<LineSegments> {
     super(new LineSegments(geometry, material));
 
 
-    this._size = Math.min(Math.max(size, min_size), max_size);;
+    this._size = Math.min(Math.max(size, min_size), max_size);
     this.color = new Color(color);
 
     this.updateColors();

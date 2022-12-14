@@ -110,7 +110,7 @@ export class ViewportIKModeOperator extends Operator {
           if (anchor) {
             const cmd = new SelectCommand(
               this.editor, anchor, this.multipleSelectionActive);
-              cmd.exec();
+            cmd.exec();
           } 
           return;
         }

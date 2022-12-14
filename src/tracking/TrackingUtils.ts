@@ -34,7 +34,7 @@ interface Keypoint3D {
   y: number;
   z: number;
   name: string;
-};
+}
 
 const TFHand = {
   wrist: 0,
@@ -50,31 +50,31 @@ abstract class SkeletonLinesHelper extends LineSegments {
   readonly isSkeletonLinesHelper = true;
   readonly type = "SkeletonLinesHelper";
 
-	constructor (skeletonSize: number, primaryColor = 'red'||'blue', ) {
+  constructor (skeletonSize: number, primaryColor = 'red'||'blue',) {
 
-		const geometry = new BufferGeometry();
+    const geometry = new BufferGeometry();
 
-		const vertices = [];
-		const colors = [];
+    const vertices = [];
+    const colors = [];
 
-    let color1 = new Color( 0, 0, 1 );
+    let color1 = new Color(0, 0, 1);
     if (primaryColor === "red") {
-      color1 = new Color( 1, 0, 0 );
+      color1 = new Color(1, 0, 0);
     }
 
-		const color2 = new Color( 0, 1, 0 );
+    const color2 = new Color(0, 1, 0);
 
-		for ( let i = 0; i < skeletonSize; i ++ ) {
-      vertices.push( 0, 0, 0 );
-      vertices.push( 0, 0, 0 );
-      colors.push( color1.r, color1.g, color1.b );
-      colors.push( color2.r, color2.g, color2.b );
-		}
+    for (let i = 0; i < skeletonSize; i ++) {
+      vertices.push(0, 0, 0);
+      vertices.push(0, 0, 0);
+      colors.push(color1.r, color1.g, color1.b);
+      colors.push(color2.r, color2.g, color2.b);
+    }
 
-		geometry.setAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		geometry.setAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
+    geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3));
+    geometry.setAttribute('color', new Float32BufferAttribute(colors, 3));
 
-		const material = new LineBasicMaterial( {
+    const material = new LineBasicMaterial({
       vertexColors: true,
       depthTest: false,
       depthWrite: false,
@@ -82,10 +82,10 @@ abstract class SkeletonLinesHelper extends LineSegments {
       transparent: true
     });
 
-		super( geometry, material );
+    super(geometry, material);
 
-		this.matrixAutoUpdate = false;
-	}
+    this.matrixAutoUpdate = false;
+  }
 }
 
 class TFHandHelper extends SkeletonLinesHelper {
@@ -96,7 +96,7 @@ class TFHandHelper extends SkeletonLinesHelper {
 
   updateFromHand (hand: Hand, scale=1) {
 
-    const position = this.geometry.getAttribute( 'position' );
+    const position = this.geometry.getAttribute('position');
 
     let j=0;
     let p;
@@ -111,16 +111,16 @@ class TFHandHelper extends SkeletonLinesHelper {
       if (finger.length > 0) {
 
         p = points[TFHand.wrist];
-        position.setXYZ( j, p.x*scale, p.y*scale, p.z*scale);
+        position.setXYZ(j, p.x*scale, p.y*scale, p.z*scale);
         p = points[finger[0]];
-        position.setXYZ( j+1, p.x*scale, p.y*scale, p.z*scale );
+        position.setXYZ(j+1, p.x*scale, p.y*scale, p.z*scale);
         j += 2;
 
         for (let i=0; i< finger.length -1; i++) {
           p = points[finger[i]];
-          position.setXYZ( j, p.x*scale, p.y*scale, p.z*scale );
+          position.setXYZ(j, p.x*scale, p.y*scale, p.z*scale);
           p = points[finger[i+1]];
-          position.setXYZ( j+1, p.x*scale, p.y*scale, p.z*scale );
+          position.setXYZ(j+1, p.x*scale, p.y*scale, p.z*scale);
           j += 2;
         }
       }
@@ -205,8 +205,8 @@ export function applyHandPose(editor: Editor, mesh: SkinnedMesh, hands: Hand[]) 
       for (const finger of fingers) {
 
         // Get the direction between the wrist of the bone finger bone
-        let curr = points[TFHand.wrist];
-        let next = points[finger[0]];
+        const curr = points[TFHand.wrist];
+        const next = points[finger[0]];
         _vec1.set(curr.x, curr.y, curr.z).applyMatrix4(_mat);
         _vec2.set(next.x, next.y, next.z).applyMatrix4(_mat);
         _lastDir.subVectors(_vec2, _vec1).normalize();
@@ -332,7 +332,7 @@ function get3DPointsMap(
     keypoints: HandKeypoint[] | PoseKeypoint[],
     minScore: number,
     suffix = ""
-  ) {
+) {
 
   const keypointsMap = new Map<string, Keypoint3D>();
   let score;

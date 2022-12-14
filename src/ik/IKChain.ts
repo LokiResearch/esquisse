@@ -24,7 +24,7 @@ export class IKBoneData {
 
 export const MinSizeWarning = "IKChains cannot have a size less than 1";
 export const NotEnoughBonesWarning = (size: number, actual: number) => 
-`Not enough bones for a size of ${size}, new size is ${actual}.`
+  `Not enough bones for a size of ${size}, new size is ${actual}.`
 
 interface IKBone extends Bone {
   ik: IKBoneData;
@@ -45,7 +45,7 @@ export class IKChain {
     
     this.id = id;
     
-    if( !effector.ik ) {
+    if(!effector.ik) {
       effector.ik = new IKBoneData();
     }
     effector.ik.chains.push(this);
@@ -190,11 +190,11 @@ const _vector = new Vector3();
  * @param maxAngle Maximum rotation angle in a step
  */
 export function solveCCDChain( 
-  chain: IKChain,
-  iterations = 1,
-  minAngle?: number,
-  maxAngle?: number
- ) {
+    chain: IKChain,
+    iterations = 1,
+    minAngle?: number,
+    maxAngle?: number
+) {
 
   let rotated: boolean;
   const bones = chain.bones;
@@ -221,56 +221,56 @@ export function solveCCDChain(
         // because they call updateMatrixWorld( true ) inside.
         bone.matrixWorld.decompose(_bonePos, _invBoneQuat, _boneScale);
         _invBoneQuat.invert();
-        _effectorPos.setFromMatrixPosition( effector.matrixWorld );
+        _effectorPos.setFromMatrixPosition(effector.matrixWorld);
 
         // work in link world
-        _effectorVec.subVectors( _effectorPos, _bonePos );
-        _effectorVec.applyQuaternion( _invBoneQuat );
+        _effectorVec.subVectors(_effectorPos, _bonePos);
+        _effectorVec.applyQuaternion(_invBoneQuat);
         _effectorVec.normalize();
 
-        _targetVec.subVectors( targetPos, _bonePos );
-        _targetVec.applyQuaternion( _invBoneQuat );
+        _targetVec.subVectors(targetPos, _bonePos);
+        _targetVec.applyQuaternion(_invBoneQuat);
         _targetVec.normalize();
 
-        let angle = _targetVec.dot( _effectorVec );
+        let angle = _targetVec.dot(_effectorVec);
 
-        if ( angle > 1.0 ) {
+        if (angle > 1.0) {
 
           angle = 1.0;
 
-        } else if ( angle < - 1.0 ) {
+        } else if (angle < - 1.0) {
 
           angle = - 1.0;
 
         }
 
-        angle = Math.acos( angle );
+        angle = Math.acos(angle);
 
         // skip if changing angle is too small to prevent vibration of bone
-        if ( angle < 1e-5 ) continue;
+        if (angle < 1e-5) continue;
 
-        if ( minAngle !== undefined && angle < minAngle ) {
+        if (minAngle !== undefined && angle < minAngle) {
           angle = minAngle;
         }
 
-        if ( maxAngle !== undefined && angle > maxAngle ) {
+        if (maxAngle !== undefined && angle > maxAngle) {
           angle = maxAngle;
         }
 
-        _axis.crossVectors( _effectorVec, _targetVec );
+        _axis.crossVectors(_effectorVec, _targetVec);
         _axis.normalize();
 
-        _q.setFromAxisAngle( _axis, angle );
-        bone.quaternion.multiply( _q );
+        _q.setFromAxisAngle(_axis, angle);
+        bone.quaternion.multiply(_q);
 
         // TODO: re-consider the limitation specification
-        if ( axisLimit !== undefined ) {
+        if (axisLimit !== undefined) {
 
           let c = bone.quaternion.w;
 
-          if ( c > 1.0 ) c = 1.0;
+          if (c > 1.0) c = 1.0;
 
-          const c2 = Math.sqrt( 1 - c * c );
+          const c2 = Math.sqrt(1 - c * c);
           bone.quaternion.set(
             axisLimit.x * c2,
             axisLimit.y * c2,
@@ -280,23 +280,23 @@ export function solveCCDChain(
 
         }
 
-        if ( rotationMin !== undefined ) {
+        if (rotationMin !== undefined) {
           bone.rotation.setFromVector3(
-            _vector.setFromEuler( bone.rotation ).max( rotationMin ) );
+            _vector.setFromEuler(bone.rotation).max(rotationMin));
         }
 
-        if ( rotationMax !== undefined ) {
+        if (rotationMax !== undefined) {
           bone.rotation.setFromVector3(
-            _vector.setFromEuler( bone.rotation ).min( rotationMax ) );
+            _vector.setFromEuler(bone.rotation).min(rotationMax));
         }
 
-        bone.updateMatrixWorld( true );
+        bone.updateMatrixWorld(true);
 
         rotated = true;
       }
     }
   
-    if ( ! rotated ) break;
+    if (! rotated) break;
 
   }
 

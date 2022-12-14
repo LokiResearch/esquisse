@@ -27,7 +27,7 @@ const _BlendTextureFragment = ShaderChunk.meshphysical_frag.replace(
   ShaderChunk.map_fragment.replace(
     `diffuseColor *= sampledDiffuseColor;`,
     `diffuseColor = vec4( mix( diffuse, sampledDiffuseColor.rgb, sampledDiffuseColor.a ), opacity );`
-));
+  ));
 
 /**
  * Copy of the MeshStandardMaterial fragment shader, where the material color 
@@ -112,7 +112,7 @@ export class EScreen extends EMesh {
   setUseTransparentTexture(value: boolean) {
     this._useTransparentTexture = value;
 
-    if ( value) {
+    if (value) {
       // Use the default fragment
       this.firstMaterial.transparent = true;
       this.firstMaterial.onBeforeCompile = (shader) => {

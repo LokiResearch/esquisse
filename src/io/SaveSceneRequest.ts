@@ -41,9 +41,9 @@ export class SaveSceneRequest extends Request<void> {
   async process() {
     const scene = this.editor.scene;
 
-    let nonExportableObjectsMap = new Map<EObject, EObject>();
+    const nonExportableObjectsMap = new Map<EObject, EObject>();
     let obj: EObject | undefined = scene;
-    let queue = [];
+    const queue = [];
     // Get non exportable objects and their parent
     while (obj) {
       if (obj.canBeExported) {
@@ -99,7 +99,7 @@ export class SaveSceneRequest extends Request<void> {
       console.error(`Error occured while exporting scene in ${extension}`, error);
     }
 
-     // Get the GLTF data
+    // Get the GLTF data
     const exporter = new GLTFExporter();
     const parseOptions: GLTFExporterOptions = {
       onlyVisible: false,

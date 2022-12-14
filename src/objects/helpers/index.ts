@@ -13,5 +13,4 @@
  */
 
 export {BoneHelper} from './BoneHelper';
-export {FaceNormalsHelper} from './FaceNormalsHelper';
 export {Helper} from './Helper';

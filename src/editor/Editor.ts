@@ -106,16 +106,16 @@ export class Editor {
 
   }
 
-// #############################################################################
-//
-//                           Manipulating Objects Tree                  
-//
-// #############################################################################
+  // #############################################################################
+  //
+  //                           Manipulating Objects Tree                  
+  //
+  // #############################################################################
 
   setScene(scene: EScene) {
     this.scene = scene;
     this.scene.background = new Color(
-        this.settings.theme.esquisse.background.scene);
+      this.settings.theme.esquisse.background.scene);
     this.addEditorObjects();
     this.changeIKChains();
     this.signals.sceneChanged.emit();
@@ -123,21 +123,21 @@ export class Editor {
   }
 
   add(objects: EObject | EObject[], parent: EObject = this.scene) {
-    objects = Array.toArray(objects);
+    objects = Array.isArray(objects) ? objects : [objects];
     parent.add(objects);
     this.helpersManager.objectsAdded(objects);
     this.signals.sceneGraphUpdated.emit("ObjectsAdded");
   }
 
   attach(objects: EObject | EObject[], parent: EObject = this.scene) {
-    objects = Array.toArray(objects);
+    objects = Array.isArray(objects) ? objects : [objects];
     parent.attach(objects);
     this.helpersManager.objectsAttached(objects);
     this.signals.sceneGraphUpdated.emit("ObjectsAttached");
   }
 
   remove(objects: EObject | EObject[], removeChildren=true) {
-    objects = Array.toArray(objects);
+    objects = Array.isArray(objects) ? objects : [objects];
 
     // Remove objects from their parent with(out) their chidlren
     for (const obj of objects) {
@@ -151,11 +151,11 @@ export class Editor {
     this.signals.sceneGraphUpdated.emit("ObjectsRemoved");
   }
 
-// #############################################################################
-//
-//                            Objects Selection                  
-//
-// #############################################################################
+  // #############################################################################
+  //
+  //                            Objects Selection                  
+  //
+  // #############################################################################
 
 
   selectObjects(objects: Array<EObject>) {
@@ -202,11 +202,11 @@ export class Editor {
     }
   }
 
-// #############################################################################
-//
-//                            Objects Transform                  
-//
-// #############################################################################
+  // #############################################################################
+  //
+  //                            Objects Transform                  
+  //
+  // #############################################################################
 
 
   updateTransformPivot() {
@@ -249,11 +249,11 @@ export class Editor {
     this.signals.sceneUpdated.emit("ObjectsTransformEnded");
   }
 
-// #############################################################################
-//
-//                            Inverse Kinematics                  
-//
-// #############################################################################
+  // #############################################################################
+  //
+  //                            Inverse Kinematics                  
+  //
+  // #############################################################################
 
   changeIKChains() {
     console.log("ChangeIkChains");
@@ -324,7 +324,7 @@ export class Editor {
    * Update the ik chains of all the ik target found in the given object trees
    * @param objects 
    */
-   updateAnchorsChainForObjects(objects: EObject[]) {
+  updateAnchorsChainForObjects(objects: EObject[]) {
 
     const chainsToSolve = new Set<IKChain>();
 
@@ -351,11 +351,11 @@ export class Editor {
   setIKChainSize(anchor: EAnchor, size: number) {
     const ikChain = anchor.ikChain;
 
-    if( ikChain) {
+    if(ikChain) {
       const oldTail = ikChain.tail;
       const oldSize = ikChain.size;
       const hasChanged = this.ik.setChainSize(ikChain, size);
-      if( hasChanged ) {
+      if(hasChanged) {
         const updateBone = oldSize < size ? ikChain.tail : oldTail;
         this.helpersManager.setHelpersNeedUpdateThree(updateBone);
         anchor.signals.ikDataUpdated.emit();
@@ -410,11 +410,11 @@ export class Editor {
     }
   }
 
-// #############################################################################
-//
-//                            Tensor Flow Pose                   
-//
-// #############################################################################
+  // #############################################################################
+  //
+  //                            Tensor Flow Pose                   
+  //
+  // #############################################################################
 
   applyPose(mesh: ESkinnedMesh, poses: Pose[]) {
     const needUpdate = applyPose(mesh.threeObject, poses);

@@ -55,34 +55,34 @@ export abstract class EObject<T extends Object3D = Object3D> {
   
   /** Flag used to update the helpers in the next rendered frame, *go 
    * back to false afterwards* */
-  helpersNeedUpdate: boolean = false;
+  helpersNeedUpdate = false;
 
   /** Defines if the object can be selected in the scene */
-  isSelectable: boolean = true;
+  isSelectable = true;
 
   /** Defines if the object can be transformed in the scene */
-  isTransformable: boolean = true;
+  isTransformable = true;
 
   /** Defines if the object is displayed in the explorer list */
-  showInExplorer: boolean = true;
+  showInExplorer = true;
 
   /** Defines if the object can change parent in the scene */
-  canChangeParent: boolean = true;
+  canChangeParent = true;
 
   /** Defines if the object can receive children in the scene */
-  canReceiveChildren: boolean = true;
+  canReceiveChildren = true;
 
   /** Tells if the object is currently selected in the scene */
-  isSelected: boolean = false;
+  isSelected = false;
   
-  canBeDeleted: boolean = true;
+  canBeDeleted = true;
 
-  canBeExported: boolean = true;
+  canBeExported = true;
 
   constructor(threeObject: T) {
     this.threeObject = threeObject;
-    this.threeObject.eObject = this;
-    this.transformProxyObject = this;
+    this.threeObject.eObject = this as EObject;
+    this.transformProxyObject = this as EObject;
   }
 
   toJson(): EObjectJsonData {
@@ -227,7 +227,7 @@ export abstract class EObject<T extends Object3D = Object3D> {
     return this.threeObject.children;
   }
 
-   listMeshes() {
+  listMeshes() {
     const array = new Array<EMesh>();
     this.traverse(obj => {
       if ((obj as EMesh).isMesh) {
@@ -255,7 +255,15 @@ export abstract class EObject<T extends Object3D = Object3D> {
   get matrix() { return this.threeObject.matrix; }
   get matrixWorld() { return this.threeObject.matrixWorld; }
   // get type() { return this.threeObject.type; }
+  
+  
   get name() { return this.threeObject.name; }
+  set name(name: string) {
+    this.threeObject.name = name;
+    this.signals.nameUpdated.emit();
+  }
+
+
   get id() { return this.threeObject.id; }
   get uuid() { return this.threeObject.uuid; }
 
@@ -288,11 +296,6 @@ export abstract class EObject<T extends Object3D = Object3D> {
       }
     });
     return object;
-  }
-
-  set name(name: string) {
-    this.threeObject.name = name;
-    this.signals.nameUpdated.emit();
   }
 
   clear() {
@@ -337,7 +340,7 @@ export abstract class EObject<T extends Object3D = Object3D> {
    */
   hierarchyDistanceTo(object: EObject): number {
     let cpt = 0;
-    let parent: EObject | undefined = this;
+    let parent: EObject | undefined = this as EObject;
     while (parent) {
       if (parent === object) {
         return cpt;
@@ -350,7 +353,7 @@ export abstract class EObject<T extends Object3D = Object3D> {
 
   onBeforeRender() {
     // Update helpers if needed
-    if( this.helpersNeedUpdate) {
+    if(this.helpersNeedUpdate) {
       this.helpers.forEach(h => h.visible && h.update());
       this.helpersNeedUpdate = false;
     } 

@@ -131,7 +131,7 @@ export class IKManager {
 
     // If length is increasing, check the parent bones can be added to the chain
     if (size > chain.size) {
-      let n = size - chain.size;
+      const n = size - chain.size;
       let i = 0;
 
 

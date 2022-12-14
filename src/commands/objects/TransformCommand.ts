@@ -108,5 +108,7 @@ export class TransformCommand extends Command {
     this.do();
   }
 
-  async clean() {}
+  async clean() {
+    //do nothing
+  }
 }

@@ -25,7 +25,7 @@ export class EAmbientLight extends ELight<AmbientLight, Object3D> {
   }
 
   get color() {return this.threeObject.color}
-  set color (color: Color) {this.threeObject.color = color};
+  set color (color: Color) {this.threeObject.color = color}
 
   get intensity() {return this.threeObject.intensity}
   set intensity (value: number) {this.threeObject.intensity = value}

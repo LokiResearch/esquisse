@@ -22,7 +22,7 @@ const _pos = new Vector3();
  * @returns Parent bone or null
  */
 export function parentBone(bone: Bone) {
-  let parent = bone.parent as Bone;
+  const parent = bone.parent as Bone;
   if (parent.isBone) {
     return parent;
   }
@@ -75,7 +75,7 @@ export function rootBones(skeleton: Skeleton) {
  * @param target The target position in world space
  * @returns The closest bone if any
  */
- export function closestBoneFromPoint(skeleton: Skeleton, target: Vector3) {
+export function closestBoneFromPoint(skeleton: Skeleton, target: Vector3) {
 
   let closestBone: Bone | null = null;
   let distance = Infinity;

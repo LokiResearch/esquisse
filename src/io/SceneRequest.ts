@@ -28,7 +28,7 @@ export class SceneRequest extends Request<EScene> {
 
   process() : Promise<EScene> {
 
-    return new Promise<EScene>( (resolve, reject) => {
+    return new Promise<EScene>((resolve, reject) => {
 
       // Check if the file format is supported
       let ext_ok = false;

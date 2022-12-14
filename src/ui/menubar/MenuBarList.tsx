@@ -62,7 +62,7 @@ export class MenuBarList extends React.Component
   }
 
   render() {
-    let itemsJSX = this.props.items.map((item, index) => {
+    const itemsJSX = this.props.items.map((item, index) => {
       return <MenuBarItem item={item} key={index} onClick={this.onClose}/>
     });
 

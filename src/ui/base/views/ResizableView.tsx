@@ -103,7 +103,7 @@ export class ResizableView extends React.Component<Props, State> {
   }
 
   onResizeBarMove = (e: MouseEvent) => {
-    let factor = this.props.position === 'left' ? 1 : -1;
+    const factor = this.props.position === 'left' ? 1 : -1;
     let newWidth = this.widthStart + factor*(e.clientX - this.mouseStartX);
     newWidth = Math.max(newWidth, this.props.expandedWidth);
     this.setState({
@@ -154,10 +154,10 @@ export class ResizableView extends React.Component<Props, State> {
 
     return (
       <Paper sx={{
-          ...styles.root,
-          width: this.state.width,
-          ...this.props.sx
-        }}>
+        ...styles.root,
+        width: this.state.width,
+        ...this.props.sx
+      }}>
         {leftBar}
         <Box sx={styles.content}>
           <Box sx={styles.box}>
@@ -165,7 +165,7 @@ export class ResizableView extends React.Component<Props, State> {
               <ButtonIcon/>
             </IconButton>
           </Box>
-            {this.props.children}
+          {this.props.children}
         </Box>
         {rightBar}
       </Paper>

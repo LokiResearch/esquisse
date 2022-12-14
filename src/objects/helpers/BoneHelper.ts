@@ -12,14 +12,13 @@
 
 import {AxesHelper, BufferGeometry, ColorRepresentation, MeshStandardMaterialParameters} from 'three';
 import { Bone, SphereGeometry, MeshStandardMaterial, Mesh,
-CylinderGeometry, Quaternion, Vector3} from 'three';
+  CylinderGeometry, Quaternion, Vector3} from 'three';
 import _default from 'ts-jest';
 import { childrenBones, rootBone } from '/utils';
 import { Helper } from './Helper';
 
 
-const ikChainColors = [ 0xd7191c, 0xfdae61, 0xabdda4, 0x2b83ba ];
-
+const ikChainColors = [0xd7191c, 0xfdae61, 0xabdda4, 0x2b83ba];
 
 
 type OneMatMesh = Mesh<BufferGeometry, MeshStandardMaterial>;

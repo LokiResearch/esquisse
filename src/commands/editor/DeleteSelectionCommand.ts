@@ -38,6 +38,8 @@ export class DeleteSelectionCommand extends Command {
     this.cmdGroup.undo();
   }
 
-  async clean() {}
+  async clean() {
+    //do nothing
+  }
 
 }
