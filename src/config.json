@@ -1,0 +1,6 @@
+{
+  "defaultScene": "data/DefaultScene.gltf",
+  "showSkeletonHelpers": false,
+  "showMeshBoxHelpers": false,
+  "verbose": false
+}
