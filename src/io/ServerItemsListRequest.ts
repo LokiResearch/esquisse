@@ -14,7 +14,7 @@ import {Request} from './Request';
 import {ServerItemData} from './ioTypes';
 
 export type ServerDataType = 'scenes' | 'objects';
-const ServerDataUrl = window.location+"data/";
+const ServerDataUrl = "https://expe.lille.inria.fr/esquisse/data/";
 const ServerDataIndexUrl = ServerDataUrl + 'index.json';
 
 export class ServerItemsListRequest extends Request<ServerItemData[]> {
