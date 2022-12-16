@@ -6,8 +6,7 @@
 Esquisse is a web application built with React and Typescript to facilitate the production of Vector Graphics illustrations.
 Esquisse proposes interaction techniques to ease the manipulation of 3D objects and a custom vector graphics render engine.
 
-<img src="./resources/Esquisse1.png" width="49%"/>
-<img src="./resources/Esquisse2.png" width="49%"/>
+<img src="./resources/Esquisse1.png" width="49%"/><img src="./resources/Esquisse2.png" width="49%"/>
 
 ## Web App 
 
